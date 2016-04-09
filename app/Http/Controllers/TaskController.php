@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Validator;
 
 
@@ -40,14 +41,14 @@ class TaskController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/task/index')->withInput()->withErrors($validator);
+            return back()->withInput()->withErrors($validator);
         }
 
         $task = new Task;
         $task->name = $request->name;
         $task->save();
 
-        return redirect('/task');
+        return redirect()->action('TaskController@getIndex');
     }
 
 
@@ -61,6 +62,6 @@ class TaskController extends Controller
     public function postDelete($id)
     {
         Task::findOrFail($id)->delete();
-        return redirect('/task/index');
+        return redirect()->action('TaskController@getIndex');
     }
 }

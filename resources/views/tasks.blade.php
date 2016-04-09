@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     @include('common.errors')
 
-                    <form action="task/new" method="POST" class="form-horizontal">
+                    <form action="{{ action('TaskController@postNew') }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
                         {{--Task Name--}}
                         <div class="form-group">
@@ -51,7 +51,7 @@
 
                                     {{--Task Delete Button--}}
                                     <td>
-                                        <form action="task/delete/{{ $task->id }}" method="POST">
+                                        <form action="{{ action('TaskController@postDelete', [$task->id]) }}" method="POST">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-danger">
                                                 <i class="fa fa-btn fa-trash"></i>DELETE
