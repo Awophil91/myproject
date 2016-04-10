@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Form;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        //register custom components (templates) for forms
+        Form::component('bsText', 'components.form.text', ['textBoxName', 'labelText'=>'Label text', 'textBoxValue' => null, 'textBoxAttributes' => []]);
     }
 
     /**

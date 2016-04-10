@@ -9,13 +9,16 @@
 
                 <div class="panel-body">
                     @include('common.errors')
-                    {{ Form::open(array('action' => 'TaskController@postNew', 'class'=>'form-horizontal')) }}
-                    <div class="form-group">
-                        {{ Form::label('name', 'Task', array('class' => 'col-sm-3 control-label')) }}
-                        <div class="col-sm-6">
-                            {{ Form::text('name', old('task'), array('id' => 'name', 'class' => 'form-control')) }}
-                        </div>
-                    </div>
+                    {!! Form::open(array('action' => 'TaskController@postNew', 'class'=>'form-horizontal')) !!}
+
+                    {{-- use the custom component bsText(bootstrap text)
+                     that I defined in resouces/views/components/form/text.blade.php and whose signature
+                     Form::component('bsText', 'components.form.text', ['textBoxName', 'labelText'=>'Label text', 'textBoxValue' => null, 'textBoxAttributes' => []]);
+                     is defined in the boot method of app/Providers/AppServiceProvider.php
+                     see C:/Users/Muyiwa/Desktop/IT materials/laravel tips/Laravel Collective.htm--}}
+
+                    {{ Form::bsText('name','Task', old('task'), array('id' => 'name') )}}
+
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
                             <button type="submit" class="btn btn-default">
@@ -23,27 +26,7 @@
                             </button>
                         </div>
                     </div>
-                    {{ Form::close() }}
-
-                   {{-- <form action="{{ action('TaskController@postNew') }}" method="POST" class="form-horizontal">
-                        {{ csrf_field() }}
-                        Task Name
-                        <div class="form-group">
-                            <label for="task-name" class="col-sm-3 control-label">Task</label>
-                            <div class="col-sm-6">
-                                <input type="text" name="task-name" id="task-name" class="form-control" value="{{ old('task') }}">
-                            </div>
-                        </div>
-
-                        Add Task Button
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>ADD
-                                </button>
-                            </div>
-                        </div>
-                    </form>--}}
+                    {!! Form::close() !!}
                 </div>
             </div>
 
@@ -63,15 +46,13 @@
                             @foreach ($tasks as $task)
                                 <tr>
                                     <td class="table-text"><div>{{ $task->name }}</div></td>
-
                                     {{--Task Delete Button--}}
                                     <td>
-                                        <form action="{{ action('TaskController@postDelete', [$task->id]) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="fa fa-btn fa-trash"></i>DELETE
-                                            </button>
-                                        </form>
+                                        {!! Form::open(array('action' => array('TaskController@postDelete', $task->id), 'class'=>'form-horizontal')) !!}
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i>DELETE
+                                        </button>
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                             @endforeach
