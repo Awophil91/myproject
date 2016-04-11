@@ -8,10 +8,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Validator;
+use App\Models\Task;
+use App\Http\Requests\TaskRequest;
 
 
 class TaskController extends Controller
@@ -25,7 +23,15 @@ class TaskController extends Controller
     //url: task/index
     public function getIndex()
     {
-        return view('tasks', [
+
+        session()->flash('title', 'Task Manager');
+        session()->flash('url', url('tasks'));
+        //session('Title', 'Tasks Manager');
+        //if you nest your views in folders may be by their controllers e.g say task folder
+        //for task controller. Then you have to indicate the path to the view relative to
+        //App\resources\views where laravel expects views to be using the view alias defined
+        //in the aliases section in config\app.php
+        return view('task.tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get()
         ]);
     }
@@ -34,20 +40,13 @@ class TaskController extends Controller
     //public function getNew(){};
 
     //url: task/new for HTTPPOST
-    public function postNew(Request $request)
+    public function postNew(TaskRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            return back()->withInput()->withErrors($validator);
-        }
-
         $task = new Task;
         $task->name = $request->name;
         $task->save();
 
+        session()->flash('message', 'Successfully created Task!');
         return redirect()->action('TaskController@getIndex');
     }
 

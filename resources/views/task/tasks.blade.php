@@ -2,11 +2,13 @@
 
 @section('content')
         <div class="col-sm-offset-2 col-sm-8">
+            @if (session()->has('message'))
+                <div class="alert alert-info">{{ session()->get('message') }}</div>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-heading">
                     New Task
                 </div>
-
                 <div class="panel-body">
                     @include('common.errors')
                     {!! Form::open(array('action' => 'TaskController@postNew', 'class'=>'form-horizontal')) !!}
@@ -17,7 +19,7 @@
                      is defined in the boot method of app/Providers/AppServiceProvider.php
                      see C:/Users/Muyiwa/Desktop/IT materials/laravel tips/Laravel Collective.htm--}}
 
-                    {{ Form::bsText('name','Task', old('task'), array('id' => 'name') )}}
+                    {{ Form::bsText('name','Task', old('name'), array('id' => 'name') )}}
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">

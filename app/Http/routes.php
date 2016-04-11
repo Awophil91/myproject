@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -11,15 +12,18 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-
-    /**
-     * Show Task Dashboard
-     */
-    //url: http://localhost:{port}
-    Route::get('/','TaskController@getIndex');
-    //url: http://localhost:{port}/task
-    Route::get('task','TaskController@getIndex');
-
-    Route::controller('task', 'TaskController');
+/**
+ * Show Landing page
+ */
+//url: http://localhost:{port}
+Route::get('/', function () {
+    return view('welcome');
 });
+
+//url: http://localhost:{port}/tasks
+Route::get('tasks','TaskController@getIndex');
+Route::controller('tasks', 'TaskController');
+
+//route to NerdController a resource controller
+Route::resource('nerds', 'NerdController');
+

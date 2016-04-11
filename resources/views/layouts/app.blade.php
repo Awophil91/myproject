@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Task Manager</title>
+    <title>{{session()->get('title')}}</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -42,8 +42,8 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Task Manager
+            <a class="navbar-brand" href='{{session()->get('url')}}'>
+                {{session()->get('title')}}
             </a>
         </div>
         <div class="navbar-collapse collapse">
