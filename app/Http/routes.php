@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -23,6 +22,8 @@ Route::get('/', function () {
 //url: http://localhost:{port}/tasks
 Route::get('tasks','TaskController@getIndex');
 Route::controller('tasks', 'TaskController');
+Route::get('nerds/{id}/image', 'NerdController@getImage');
+
 
 //route to NerdController a resource controller
 Route::resource('nerds', 'NerdController');

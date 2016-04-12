@@ -1,0 +1,13 @@
+DIV#header DIV.title, DIV#item-left H3, DIV#item-left H4, DIV.pager A { font: bold 1em "Arial Narrow", "Franklin Gothic Medium", Arial; }
+DIV#header { background-color: #444; border-bottom: 2px solid #111; color: White; }
+DIV#header DIV.title { font-size: 2em; padding: .6em; }
+DIV#content { padding: 1em; }
+DIV.item { border-top: 1px dotted gray; padding-top: .7em; margin-bottom: .7em; }
+DIV.item:first-child { border-top:none; padding-top: 0; }
+DIV#item-left {float:left}
+DIV#item-left H3 { font-size: 1.3em; margin: 0 0 .25em 0; }
+DIV#item-left H4 { font-size: 1.1em; margin:.4em 0 0 0; }
+DIV#item-right {float: right; }
+
+DIV#image {float:left; margin-right:20px}
+DIV#image IMG { width:75px; height:75px}

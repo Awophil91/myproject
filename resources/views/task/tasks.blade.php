@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('menu')
+    <li><a href="{{ URL::to('tasks') }}">ALL TASKS</a></li>
+@endsection
+
 @section('content')
         <div class="col-sm-offset-2 col-sm-8">
             @if (session()->has('message'))
@@ -35,7 +39,7 @@
             @if (count($tasks) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Current Tasks
+                        Tasks
                     </div>
 
                     <div class="panel-body">

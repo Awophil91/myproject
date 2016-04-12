@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('menu')
+    <li><a href="{{ url('nerds') }}">ALL NERDS</a></li>
+@endsection
+
 @section('content')
     <div class="col-sm-offset-2 col-sm-8">
         <div class="panel panel-default">
@@ -11,7 +15,7 @@
                 <!-- if there are creation errors, they will show here -->
                 @include('common.errors')
 
-                {!! Form::open(array('url' => 'nerds', 'class'=>'form-horizontal')) !!}
+                {!! Form::open(array('url' => 'nerds', 'files'=>true, 'class'=>'form-horizontal')) !!}
 
                 {!! Form::bsText('name','Name', old('name'), array('id' => 'name')) !!}
                 {!! Form::bsText('email','Email', old('email'), array('id' => 'email')) !!}
@@ -20,6 +24,19 @@
                     <div class="col-sm-6">
                         {!! Form::select('nerd_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), old('nerd_level'), array('class' => 'form-control')) !!}
                     </div>
+                    @if($errors->has('nerd_level'))
+                        <span style="color:red" class="col-lg-offset-3 col-sm-6">{{ $errors->first('nerd_level') }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('image', 'Image', array('class' => 'col-sm-3 control-label')) !!}
+                    <div class="col-sm-6">
+                        {!! Form::file('image') !!}
+                    </div>
+                    @if($errors->has('image'))
+                        <span style="color:red" class="col-lg-offset-3 col-sm-6">{{ $errors->first('image') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">

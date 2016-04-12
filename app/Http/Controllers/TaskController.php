@@ -17,16 +17,14 @@ class TaskController extends Controller
 
     public function __construct()
     {
-
+        session()->flash('title', 'Task Manager');
+        session()->flash('url', url('tasks'));
     }
 
     //url: task/index
     public function getIndex()
     {
 
-        session()->flash('title', 'Task Manager');
-        session()->flash('url', url('tasks'));
-        //session('Title', 'Tasks Manager');
         //if you nest your views in folders may be by their controllers e.g say task folder
         //for task controller. Then you have to indicate the path to the view relative to
         //App\resources\views where laravel expects views to be using the view alias defined
