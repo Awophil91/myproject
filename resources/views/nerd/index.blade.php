@@ -14,7 +14,9 @@
         <div class="col-sm-offset-2 col-sm-8">
             <!-- will be used to show any messages -->
             @if (session()->has('message'))
-                <div class="alert alert-info">{{ session()->get('message') }}</div>
+                <div class="alert alert-info">{{ session()->get('message') }}
+                    <button type="button" class="close" aria-hidden="true"> &times; </button>
+                </div>
             @endif
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -27,11 +29,11 @@
                             <div id="item-left">
                                 @if ($value->image_name != null)
                                     <div id="image">
-                                        <img style="width: 75px; height: 75px" src="{{ action('NerdController@getImage', array($value->id)) }}" />
+                                        <img class="img-thumbnail" src="{{ action('NerdController@getImage', array($value->id)) }}" />
                                     </div>
                                 @else
                                     <div id="image">
-                                        <img style="width: 75px; height: 75px" src="{{ asset('images/nerd.gif') }}" />
+                                        <img class="img-thumbnail"  src="{{ asset('images/nerd.gif') }}" />
                                     </div>
                                 @endif
                                     <div style="float:left">

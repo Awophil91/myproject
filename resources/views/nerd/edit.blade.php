@@ -20,9 +20,9 @@
 
                 <div class="text-center">
                     @if ($nerd->image_name != null)
-                        <img style="width: 75px; height: 75px" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
-                    @else
-                        <img style="width: 75px; height: 75px" src="{{ asset('images/nerd.gif') }}">
+                        <img style="width: 128px; height: 128px" class="img-thumbnail" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
+                    {{--@else
+                        <img class="img-thumbnail" src="{{ asset('images/nerd.gif') }}">--}}
                     @endif
                 </div>
                 <br/>
@@ -35,7 +35,7 @@
                         {!! Form::select('nerd_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), null, array('class' => 'form-control')) !!}
                     </div>
                     @if($errors->has('nerd_level'))
-                        <span style="color:red" class="col-lg-offset-3 col-sm-6">{{ $errors->first('nerd_level') }}</span>
+                        <span style="color:red" class="col-sm-offset-3 col-sm-6">{{ $errors->first('nerd_level') }}</span>
                     @endif
                 </div>
 
@@ -45,7 +45,9 @@
                         {!! Form::file('image') !!}
                     </div>
                     @if($errors->has('image'))
-                        <span style="color:red" class="col-lg-offset-3 col-sm-6">{{ $errors->first('image') }}</span>
+                        <span style="color:red" class="col-sm-6">{{ $errors->first('image') }}</span>
+                    @else
+                        <span style="color:gray" class="col-sm-6">Not more than 4096KB(4MB)</span>
                     @endif
                 </div>
 

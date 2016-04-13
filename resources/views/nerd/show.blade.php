@@ -8,15 +8,14 @@
     <h1>Showing {{ $nerd->name }}</h1>
 
     <div class="jumbotron text-center">
-        {{$nerd->image_name}}
         @if ($nerd->image_name != null)
-            <div id="image">
-                <img style="width: 75px; height: 75px" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
+            <div>
+                <img class="img-circle" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
             </div>
-        @else
+        {{--@else
             <div id="image">
                 <img style="width: 75px; height: 75px" src="{{ asset('images/nerd.gif') }}" />
-            </div>
+            </div>--}}
         @endif
         <h2>{{ $nerd->name }}</h2>
         <p>

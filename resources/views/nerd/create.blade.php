@@ -25,7 +25,7 @@
                         {!! Form::select('nerd_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), old('nerd_level'), array('class' => 'form-control')) !!}
                     </div>
                     @if($errors->has('nerd_level'))
-                        <span style="color:red" class="col-lg-offset-3 col-sm-6">{{ $errors->first('nerd_level') }}</span>
+                        <span style="color:red" class="col-sm-offset-3 col-sm-6">{{ $errors->first('nerd_level') }}</span>
                     @endif
                 </div>
 
@@ -35,7 +35,9 @@
                         {!! Form::file('image') !!}
                     </div>
                     @if($errors->has('image'))
-                        <span style="color:red" class="col-lg-offset-3 col-sm-6">{{ $errors->first('image') }}</span>
+                        <span style="color:red" class="col-sm-6">{{ $errors->first('image') }}</span>
+                    @else
+                        <span style="color:gray" class="col-sm-6">Not more than 4096KB(4MB)</span>
                     @endif
                 </div>
 
