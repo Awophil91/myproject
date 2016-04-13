@@ -33,14 +33,6 @@
                 {!! Form::bsFile('image','Image', array('id' => 'image')) !!}
                 {!! Form::bsButton('btnSave','SAVE', 'fa fa-btn fa-save', 'click to save changes') !!}
 
-                {{--<div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-default">
-                            <i class="fa fa-btn fa-save"></i>SAVE
-                        </button>
-                    </div>
-                </div>--}}
-
                 {!! Form::close() !!}
             </div>
         </div>

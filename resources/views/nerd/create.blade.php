@@ -23,14 +23,6 @@
                 {!! Form::bsFile('image','Image', array('id' => 'image')) !!}
                 {!! Form::bsButton('btnAdd','ADD', 'fa fa-btn fa-plus', 'click to add nerd') !!}
 
-                {{--<div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-default">
-                            <i class="fa fa-btn fa-plus"></i>ADD
-                        </button>
-                    </div>
-                </div>--}}
-
                 {!! Form::close() !!}
             </div>
         </div>
