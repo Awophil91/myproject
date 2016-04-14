@@ -149,13 +149,18 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /**
-         * I added this
+         * I added this for installed third party libraries
+         * Laravelcolective: for form and other html helpers
          * see https://laravelcollective.com/docs/5.2/html
+         * Intervention image: for Image manipulation
+         * Proengsoft JSvalidation: for client side validation
+         * Laralib scaffold: for scaffold generator
          * and
          */
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Proengsoft\JsValidation\JsValidationServiceProvider::class,
+        Laralib\L5scaffold\GeneratorsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -215,6 +220,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
+
     ],
 
 ];

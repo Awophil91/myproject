@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "intervention/image": "dev-master",
-        "proengsoft/laravel-jsvalidation": "~1.1"
+        "proengsoft/laravel-jsvalidation": "~1.1",
+        "laralib/l5scaffold": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

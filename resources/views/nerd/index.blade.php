@@ -46,7 +46,7 @@
                                 <div style="float: left; padding-right:.5em; padding-top:.5em">
                                     <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
                                     <a class="btn btn-small btn-success" href="{{ url('nerds/' . $value->id) }}">
-                                        <i class="fa fa-btn fa-folder-open"></i>SHOW
+                                        <i class="fa fa-btn fa-eye"></i>SHOW
                                     </a>
                                 </div>
                                 <div style="float: left; padding-right:.5em; padding-top:.5em">

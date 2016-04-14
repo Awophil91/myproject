@@ -1,15 +1,7 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Muyiwa
- * Date: 4/9/2016
- * Time: 11:29 AM
- */
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Models\Task;
-use App\Http\Requests\TaskRequest;
+use App\Http\Requests;
 
 
 class TaskController extends Controller

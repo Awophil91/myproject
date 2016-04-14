@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1d378fd1327ac2e1ee509c5c3e84f965",
-    "content-hash": "e2921395fcaf5b6ce1bbae20c7b39b48",
+    "hash": "fc5de15b2846e972b0a478b59f99ab28",
+    "content-hash": "6c714117d926eb32443d9240aac2481e",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -425,6 +425,49 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "laralib/l5scaffold",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laralib/l5scaffold.git",
+                "reference": "893d7c3531449c17fa48e9d1974f449d7947c8eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laralib/l5scaffold/zipball/893d7c3531449c17fa48e9d1974f449d7947c8eb",
+                "reference": "893d7c3531449c17fa48e9d1974f449d7947c8eb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laralib\\L5scaffold\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fernando Brito",
+                    "email": "fernandobritofl@gmail.com"
+                }
+            ],
+            "description": "Extend Laravel 5's generators scaffold.",
+            "keywords": [
+                "generators",
+                "laravel",
+                "laravel5",
+                "scaffold"
+            ],
+            "time": "2015-10-02 22:23:19"
         },
         {
             "name": "laravel/framework",
