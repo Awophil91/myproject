@@ -30,8 +30,8 @@ class ProductRequest extends Request
     {
         return [
             'name'=>'required|min:3|max:255|unique:products,name,'.$this->route()->parameter('products'),
-            'category'=>'required|exists:product_categories,id',
-            'price'=>['required','numeric']
+            'category_id'=>'required|exists:categories,id',
+            'price'=>'required|numeric'
         ];
 
     }
@@ -44,7 +44,7 @@ class ProductRequest extends Request
     public function messages()
     {
         return [
-            'category.exists' => 'Please select a category',
+            'category_id.exists' => 'Please select a category',
         ];
     }
 }

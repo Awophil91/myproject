@@ -28,7 +28,7 @@ Route::resource('nerds', 'NerdController');
 //scafolded templates using laralib
 Route::resource('tweets','TweetController');
 Route::resource('products','ProductController');
-Route::resource('categories','ProductCategoryController');
+Route::resource('categories','CategoryController');
 
 Route::get('nerds/{id}/image', 'NerdController@getImage');
 

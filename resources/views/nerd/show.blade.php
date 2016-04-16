@@ -10,7 +10,7 @@
     <div class="jumbotron text-center">
         @if ($nerd->image_name != null)
             <div>
-                <img class="img-circle" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
+                <img style="width: 200px; height: 200px" class="img-circle" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
             </div>
         {{--@else
             <div id="image">
