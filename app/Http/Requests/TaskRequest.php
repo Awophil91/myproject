@@ -6,7 +6,7 @@
  * Time: 12:18 AM
  */
 
-namespace App\Http\Requests;
+namespace Manager\Http\Requests;
 
 class TaskRequest extends Request
 {

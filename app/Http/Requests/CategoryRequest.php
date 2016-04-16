@@ -6,7 +6,7 @@
  * Time: 7:51 PM
  */
 
-namespace App\Http\Requests;
+namespace Manager\Http\Requests;
 
 
 class CategoryRequest extends Request

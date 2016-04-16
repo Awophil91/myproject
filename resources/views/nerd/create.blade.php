@@ -32,5 +32,5 @@
 @section('scripts')
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\NerdRequest') !!}
+    {!! JsValidator::formRequest('Manager\Http\Requests\NerdRequest') !!}
 @endsection

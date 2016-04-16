@@ -6,7 +6,7 @@
  * Time: 11:28 PM
  */
 
-namespace App\Http\Requests;
+namespace Manager\Http\Requests;
 
 
 class NerdRequest extends Request {

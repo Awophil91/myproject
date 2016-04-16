@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Manager\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Form;

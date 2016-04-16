@@ -1,7 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Manager\Http\Controllers;
 
-use App\Models\Task;
-use App\Http\Requests;
+use Manager\Models\Task;
+use Manager\Http\Requests;
 
 
 class TaskController extends Controller
@@ -19,7 +19,7 @@ class TaskController extends Controller
 
         //if you nest your views in folders may be by their controllers e.g say task folder
         //for task controller. Then you have to indicate the path to the view relative to
-        //App\resources\views where laravel expects views to be using the view alias defined
+        //Manager\resources\views where laravel expects views to be using the view alias defined
         //in the aliases section in config\app.php
         return view('task.tasks', [
             'tasks' => Task::orderBy('created_at', 'asc')->get()

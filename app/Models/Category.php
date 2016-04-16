@@ -6,7 +6,7 @@
  * Time: 7:41 PM
  */
 
-namespace App\Models;
+namespace Manager\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +22,6 @@ class Category extends Model {
     // category __has_many__ products
     public function products()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany('Manager\Models\Product');
     }
 }

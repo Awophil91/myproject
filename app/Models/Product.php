@@ -6,7 +6,7 @@
  * Time: 7:02 PM
  */
 
-namespace App\Models;
+namespace Manager\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +20,6 @@ class Product extends Model{
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('Manager\Models\Category');
     }
 }

@@ -6,7 +6,7 @@
  * Time: 11:34 PM
  */
 
-namespace App\Http\Requests;
+namespace Manager\Http\Requests;
 
 
 class ProductRequest extends Request
