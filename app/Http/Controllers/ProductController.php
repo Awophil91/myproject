@@ -21,7 +21,9 @@ class ProductController extends Controller {
 	 */
 	public function index()
 	{
-		$products = Product::orderBy('id', 'desc')->paginate(10);
+		$products = Product::orderBy('id', 'desc')->paginate(3);
+        //$this->dispatch(new \Manager\Jobs\SendEmailJob($products->count()));
+
 		return view('product.index', compact('products'));
 	}
 

@@ -2,7 +2,7 @@
 
 use Manager\Http\Requests\NerdRequest;
 use Manager\Models\Nerd;
-use Illuminate\Support\Facades\File;
+use File;
 use Intervention\Image\Facades\Image;
 
 

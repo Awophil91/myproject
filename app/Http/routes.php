@@ -22,6 +22,8 @@ Route::get('/', function () {
 //url: http://localhost:{port}/tasks
 Route::get('tasks','TaskController@getIndex');
 Route::controller('tasks', 'TaskController');
+
+
 //route to NerdController a resource controller
 Route::resource('nerds', 'NerdController');
 

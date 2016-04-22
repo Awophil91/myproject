@@ -47,7 +47,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
                 {!! $products->render() !!}
+
             @else
                 <h3 class="text-center alert alert-info">Empty!</h3>
             @endif
