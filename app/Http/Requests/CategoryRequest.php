@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muyiwa
- * Date: 4/14/2016
- * Time: 7:51 PM
- */
+
 
 namespace Manager\Http\Requests;
 
@@ -32,5 +27,4 @@ class CategoryRequest extends Request
             'name'=>'required|min:3|max:255|unique:categories,name,'.$this->route()->parameter('categories')
         ];
     }
-
 }

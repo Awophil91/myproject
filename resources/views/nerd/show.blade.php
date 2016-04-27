@@ -1,8 +1,4 @@
-@extends('layout')
-
-@section('menu')
-    <li><a href="{{ URL::to('nerds') }}">ALL NERDS</a></li>
-@endsection
+@extends('layouts.app')
 
 @section('content')
     <h1>Showing {{ $nerd->name }}</h1>

@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('menu')
+{{--@section('menu')
     <li><a href="{{ URL::to('nerds') }}">ALL NERDS</a></li>
-@endsection
+@endsection--}}
 
 @section('content')
     <div class="col-sm-offset-2 col-sm-8">

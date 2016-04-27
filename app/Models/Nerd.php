@@ -1,8 +1,11 @@
 <?php
 
+
 namespace Manager\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
+
 
 class Nerd extends Model
 {

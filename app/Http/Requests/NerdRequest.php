@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muyiwa
- * Date: 4/10/2016
- * Time: 11:28 PM
- */
+
 
 namespace Manager\Http\Requests;
 
 
-class NerdRequest extends Request {
+class NerdRequest extends Request
+{
 
     /**
      * @return bool

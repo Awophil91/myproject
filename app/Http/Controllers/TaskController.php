@@ -1,28 +1,30 @@
-<?php namespace Manager\Http\Controllers;
+<?php
 
+
+namespace Manager\Http\Controllers;
+
+
+use Illuminate\Http\Request;
+use Manager\Http\Requests\TaskRequest;
+use Manager\Repositories\TaskRepository;
 use Manager\Models\Task;
-use Manager\Http\Requests;
 
 
 class TaskController extends Controller
 {
+    protected $tasks;
 
-    public function __construct()
+    public function __construct(TaskRepository $tasks)
     {
-        session()->flash('title', 'Task Manager');
-        session()->flash('url', url('tasks'));
+        $this->middleware('auth');
+        $this->tasks = $tasks;
     }
 
     //url: task/index
-    public function getIndex()
+    public function getIndex(Request $request)
     {
-
-        //if you nest your views in folders may be by their controllers e.g say task folder
-        //for task controller. Then you have to indicate the path to the view relative to
-        //Manager\resources\views where laravel expects views to be using the view alias defined
-        //in the aliases section in config\app.php
         return view('task.tasks', [
-            'tasks' => Task::orderBy('created_at', 'asc')->get()
+            'tasks' => $this->tasks->forUser($request->user())
         ]);
     }
 
@@ -32,9 +34,12 @@ class TaskController extends Controller
     //url: task/new for HTTPPOST
     public function postNew(TaskRequest $request)
     {
-        $task = new Task;
+        $task=new Task();
         $task->name = $request->name;
-        $task->save();
+        $this->authorize($task);
+        $request->user()->tasks()->create([
+            'name' => $request->name,
+        ]);
 
         session()->flash('message', 'Successfully created Task!');
         return redirect()->action('TaskController@getIndex');
@@ -48,9 +53,11 @@ class TaskController extends Controller
     //public function getDelete($id){}
 
     //url: task/delete
-    public function postDelete($id)
+    public function postDelete(Request $request, $id)
     {
-        Task::findOrFail($id)->delete();
+        $task=Task::findOrFail($id);
+        $this->authorize($task);
+        $task->delete();
         return redirect()->action('TaskController@getIndex');
     }
 }

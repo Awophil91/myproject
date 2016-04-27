@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Manager\Jobs;
+
 
 use Illuminate\Contracts\Mail\Mailer;
 use Manager\Jobs\Job;

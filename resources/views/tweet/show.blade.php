@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.app')
+
 @section('header')
 <div class="page-header">
         <h1>Tweets / Show #{{$tweet->id}}</h1>
@@ -36,5 +37,4 @@
 
         </div>
     </div>
-
 @endsection

@@ -4,6 +4,8 @@ namespace Manager\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Manager\Models\Task;
+use Manager\Policies\TaskPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Manager\Model' => 'Manager\Policies\ModelPolicy',
+        Task::class => TaskPolicy::class,
     ];
 
     /**
@@ -25,7 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
-
         //
     }
 }

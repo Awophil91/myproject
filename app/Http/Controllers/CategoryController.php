@@ -1,11 +1,16 @@
-<?php namespace Manager\Http\Controllers;
+<?php
+
+
+namespace Manager\Http\Controllers;
+
 
 use Manager\Http\Requests\CategoryRequest;
-
 use Manager\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller {
+
+class CategoryController extends Controller
+{
 
 	/**
 	 * Display a listing of the resource.
@@ -15,10 +20,8 @@ class CategoryController extends Controller {
 
     public function __construct()
     {
-        session()->flash('title', 'Category Manager');
-        session()->flash('url', url('categories'));
+        $this->middleware('auth');
     }
-
 
 	public function index()
 	{

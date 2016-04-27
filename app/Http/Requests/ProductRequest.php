@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muyiwa
- * Date: 4/13/2016
- * Time: 11:34 PM
- */
+
 
 namespace Manager\Http\Requests;
 

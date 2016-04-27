@@ -1,4 +1,7 @@
-<?php namespace Manager\Http\Controllers;
+<?php
+
+namespace Manager\Http\Controllers;
+
 
 use Manager\Http\Requests\NerdRequest;
 use Manager\Models\Nerd;
@@ -13,13 +16,10 @@ class NerdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct()
     {
-        //session()->flash('title', 'Nerd Manager');
-        //session()->flash('url', url('nerds'));
+        $this->middleware('auth');
     }
-
 
     public function index()
     {
@@ -65,7 +65,7 @@ class NerdController extends Controller
     public function show($id)
     {
         // get the nerd
-        $nerd = Nerd::find($id);
+        $nerd = Nerd::findOrFail($id);
         // show the view and pass the nerd to it
         return view('nerd.show')->with('nerd', $nerd);
     }
@@ -79,7 +79,7 @@ class NerdController extends Controller
     public function edit($id)
     {
         // get the nerd
-        $nerd = Nerd::find($id);
+        $nerd = Nerd::findOrFail($id);
         // show the edit form and pass the nerd
         return view('nerd.edit')->with('nerd', $nerd);
     }
@@ -93,7 +93,7 @@ class NerdController extends Controller
      */
     public function update(NerdRequest $request, $id)
     {
-        $nerd = Nerd::find($id);
+        $nerd = Nerd::findOrFail($id);
         $this->saveNerd($request, $nerd);
         // redirect
         session()->flash('message', 'Successfully updated nerd '. $nerd->name.'!');
@@ -109,7 +109,7 @@ class NerdController extends Controller
     public function destroy($id)
     {
         // delete
-        $nerd = Nerd::find($id);
+        $nerd = Nerd::findOrFail($id);
         $imageName=$nerd->image_name;
         $nerdName=$nerd->name;
         $nerd->delete();
@@ -123,10 +123,7 @@ class NerdController extends Controller
     public function getImage($id)
     {
         //return $id;
-        $nerd = Nerd::find($id);
-        if($nerd==null)
-            abort(404);
-
+        $nerd = Nerd::findOrFail($id);
         $filePath = storage_path($this->getSubFolder().$nerd->image_name);
         if (!file_exists($filePath))
             abort(404);

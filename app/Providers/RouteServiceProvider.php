@@ -4,6 +4,7 @@ namespace Manager\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Manager\Models\Task;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,7 +27,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         //constrain id segment variables
         $router->pattern('id', '[0-9]+');
-
+        $router->model('task', Task::class);
+        //$router->model('task', 'App\Task');
         parent::boot($router);
     }
 

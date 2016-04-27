@@ -1,18 +1,21 @@
-<?php namespace Manager\Http\Controllers;
+<?php
+
+
+namespace Manager\Http\Controllers;
+
 
 use Manager\Http\Requests;
 use Manager\Models\Tweet;
 use Illuminate\Http\Request;
 
-class TweetController extends Controller {
 
+class TweetController extends Controller
+{
 
     public function __construct()
     {
-        session()->flash('title', 'Tweet Manager');
-        session()->flash('url', url('tweets'));
+        $this->middleware('auth');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -113,5 +116,4 @@ class TweetController extends Controller {
 
 		return redirect()->route('tweets.index')->with('message', 'Item deleted successfully.');
 	}
-
 }

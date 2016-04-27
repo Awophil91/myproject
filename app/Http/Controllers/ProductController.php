@@ -1,18 +1,23 @@
-<?php namespace Manager\Http\Controllers;
+<?php
+
+
+namespace Manager\Http\Controllers;
+
 
 use Manager\Models\Category;
 use Manager\Models\Product;
 use Manager\Http\Requests\ProductRequest;
 
-class ProductController extends Controller {
 
+class ProductController extends Controller
+{
 
     public function __construct()
     {
+        $this->middleware('auth');
         /*session()->flash('title', 'Product Manager');
         session()->flash('url', url('products'));*/
     }
-
 
 	/**
 	 * Display a listing of the resource.
@@ -23,7 +28,6 @@ class ProductController extends Controller {
 	{
 		$products = Product::orderBy('id', 'desc')->paginate(3);
         //$this->dispatch(new \Manager\Jobs\SendEmailJob($products->count()));
-
 		return view('product.index', compact('products'));
 	}
 
@@ -34,11 +38,7 @@ class ProductController extends Controller {
 	 */
 	public function create()
     {
-		$categories=Category::orderBy('created_at', 'asc')->get();
-        $catArray=array('0'=>'Select a category');
-        foreach($categories as $category)
-           $catArray= array_merge($catArray, array($category->id => $category->name));
-
+        $catArray = $this->getCategories();
         // load the view and pass the product categories
         return view('product.create')->with('categoriesArray', $catArray);
 	}
@@ -56,7 +56,6 @@ class ProductController extends Controller {
 		return redirect()->route('products.index')->with('message', 'Product created successfully.');
 	}
 
-
     /**
 	 * Display the specified resource.
 	 *
@@ -69,7 +68,6 @@ class ProductController extends Controller {
 		return view('product.show', compact('product'));
 	}
 
-
     /**
 	 * Show the form for editing the specified resource.
 	 *
@@ -79,14 +77,9 @@ class ProductController extends Controller {
 	public function edit($id)
 	{
 		$product = Product::findOrFail($id);
-        $categories=Category::orderBy('created_at', 'asc')->get();
-        $catArray=array('0'=>'Select a category');
-        foreach($categories as $category)
-            $catArray= array_merge($catArray, array($category->id => $category->name));
-
+        $catArray = $this->getCategories();
         return view('product.edit', compact('product'))->with('categoriesArray', $catArray);
 	}
-
 
 	/**
 	 * Update the specified resource in storage.
@@ -119,7 +112,7 @@ class ProductController extends Controller {
      * @param ProductRequest $request
      * @param $product
      */
-    public function saveProduct(ProductRequest $request, Product $product)
+    private function saveProduct(ProductRequest $request, Product $product)
     {
         $product->name = $request->input("name");
         //associate for one to one relationships,
@@ -129,4 +122,14 @@ class ProductController extends Controller {
         $product->save();
     }
 
+    /**
+     * @return array
+     */
+    private function getCategories()
+    {
+        $categories = Category::orderBy('created_at', 'asc')->lists('name', 'id')->toArray();
+        $catArray = array('0' => 'Select a category');
+        $catArray = array_merge($catArray, $categories);
+        return $catArray;
+    }
 }
