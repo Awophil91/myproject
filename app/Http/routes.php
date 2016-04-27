@@ -15,9 +15,7 @@
  * Show Landing page
  */
 //url: http://localhost:{port}
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 //url: http://localhost:{port}/tasks
 Route::get('tasks','TaskController@getIndex');
@@ -34,5 +32,6 @@ Route::resource('categories','CategoryController');
 
 Route::get('nerds/{id}/image', 'NerdController@getImage');
 
-
-
+//authentication routes
+Route::auth();
+Route::get('/home', 'HomeController@index');

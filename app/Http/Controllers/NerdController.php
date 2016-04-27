@@ -16,17 +16,17 @@ class NerdController extends Controller
 
     public function __construct()
     {
-        session()->flash('title', 'Nerd Manager');
-        session()->flash('url', url('nerds'));
+        //session()->flash('title', 'Nerd Manager');
+        //session()->flash('url', url('nerds'));
     }
 
 
     public function index()
     {
         // get all the nerds
-        $nerds = Nerd::orderBy('created_at', 'desc')->get();
+        $nerds = Nerd::orderBy('id', 'desc')->paginate(3);
         // load the view and pass the nerds
-        return view('nerd.index')->with('nerds', $nerds);
+        return view('nerd.index', compact('nerds'));
     }
 
     /**

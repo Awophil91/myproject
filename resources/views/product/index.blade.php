@@ -6,7 +6,6 @@
             <i class="glyphicon glyphicon-align-justify"></i> Products
             <a class="btn btn-success pull-right" href="{{ route('products.create') }}"><i class="glyphicon glyphicon-plus"></i> CREATE</a>
         </h1>
-
     </div>
 @endsection
 

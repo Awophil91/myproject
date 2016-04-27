@@ -9,8 +9,8 @@ class ProductController extends Controller {
 
     public function __construct()
     {
-        session()->flash('title', 'Product Manager');
-        session()->flash('url', url('products'));
+        /*session()->flash('title', 'Product Manager');
+        session()->flash('url', url('products'));*/
     }
 
 

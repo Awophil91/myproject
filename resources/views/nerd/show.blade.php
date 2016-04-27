@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('menu')
     <li><a href="{{ URL::to('nerds') }}">ALL NERDS</a></li>
@@ -12,10 +12,10 @@
             <div>
                 <img style="width: 200px; height: 200px" class="img-circle" src="{{ action('NerdController@getImage', array($nerd->id)) }}" />
             </div>
-        {{--@else
-            <div id="image">
-                <img style="width: 75px; height: 75px" src="{{ asset('images/nerd.gif') }}" />
-            </div>--}}
+            {{--@else
+                <div id="image">
+                    <img style="width: 75px; height: 75px" src="{{ asset('images/nerd.gif') }}" />
+                </div>--}}
         @endif
         <h2>{{ $nerd->name }}</h2>
         <p>
@@ -23,4 +23,5 @@
             <strong>Level:</strong> {{ $nerd->nerd_level }}
         </p>
     </div>
+    <a class="btn btn-link" href="{{ route('nerds.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>
 @endsection
